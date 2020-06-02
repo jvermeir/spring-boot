@@ -2,13 +2,13 @@ package com.example.rest.service;
 
 import com.example.rest.model.Stuff;
 
-import java.util.Collection;
-
 public interface MyService {
 
-    public Collection<Stuff> getAllStuff();
+    Iterable<Stuff> getAllStuff();
 
-    public Stuff getStuffById(String id);
+    Stuff getStuffById(Integer id);
 
-    public void add(Stuff stuff);
+    void add(Stuff stuff);
+
+    void deleteAll();
 }

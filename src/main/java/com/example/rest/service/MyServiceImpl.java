@@ -1,34 +1,36 @@
 package com.example.rest.service;
 
 import com.example.rest.model.Stuff;
+import com.example.rest.repo.StuffRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class MyServiceImpl implements MyService {
-    private final Map<String, Stuff> allStuff;
-    public MyServiceImpl() {
-        allStuff = new HashMap<>();
-        allStuff.put("id1", new Stuff("id1", "id1Value"));
-        allStuff.put("id2", new Stuff("id2", "id2Value"));
+    @Autowired
+    private StuffRepository stuffRepository;
+
+    public MyServiceImpl(StuffRepository stuffRepository) {
+        this.stuffRepository = stuffRepository;
     }
 
     @Override
-    public Collection<Stuff> getAllStuff() {
-        Collection<Stuff> values = allStuff.values();
-        return values;
+    public Iterable<Stuff> getAllStuff() {
+        return stuffRepository.findAll();
     }
 
     @Override
-    public Stuff getStuffById(String id) {
-        return allStuff.get(id);
+    public Stuff getStuffById(Integer id) {
+        return stuffRepository.getById(id);
     }
 
     @Override
     public void add(Stuff stuff) {
-        allStuff.put(stuff.id, stuff);
+        stuffRepository.save(stuff);
+    }
+
+    @Override
+    public void deleteAll() {
+        stuffRepository.deleteAll();
     }
 }
