@@ -10,7 +10,7 @@ mvn clean install
 
 ```bash
 mvn clean package
-java -cp target/rest-0.0.1-SNAPSHOT.jar
+java -jar target/rest-0.0.1-SNAPSHOT.jar
 ```
 
 ## MySql container
