@@ -15,6 +15,7 @@ java -cp target/rest-0.0.1-SNAPSHOT.jar
 
 ## MySql container
 
+    mkdir ./data
     docker run --name some-mysql -v $PWD/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql:latest
     
 Download a sql client, MySqlWorkbench is probably easiest
