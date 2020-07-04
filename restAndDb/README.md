@@ -46,3 +46,7 @@ curl http://localhost:9090/stuff/all
 ## Java client
      
 see `com.example.rest.Client`
+
+# TODO
+
+Make sure HTTP status is correct when something fails (exception) or a key is not found. 
